@@ -1,34 +1,34 @@
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class IntermediateOperation {
     public static void main(String[] args) {
 
         //filter: filter elements based on condition
         //filter(Predicate<T> predicate): It takes Predicate as input
-        List <String> list = Arrays.asList("Luffy","Zoro","Chopper","Robin","Brook","Franky","Jimbe");
-        List<String> filterlist = list.stream()
+        List <String> strawHats = Arrays.asList("Luffy","Zoro","Chopper","Robin","Brook","Franky","Jimbe");
+        List<String> filterlist = strawHats.stream()
                 .filter(x->x.startsWith("L"))
                 .toList();
         System.out.println(filterlist);
 
+
         //map : Transform each element to another type
         //map(Function<T,R> function) : It takes Function as input
-        List <String> list2 = Arrays.asList("Law","WhiteBeard","Roger","Rayleigh","Gaban");
-        List<Integer> maplist = list2.stream()
+        List <String> otherPirates = Arrays.asList("Law","WhiteBeard","Roger","Rayleigh","Gaban");
+        List<Integer> maplist = otherPirates.stream()
                 .map(x->x.length())
                 .toList();
         System.out.println(maplist);
 
         //flatmap : Flatten nested structure into single stream
         //flatMap(Function<T, Stream<R>> mapper): It takes Function as input
-        List<List<String>> list3 = Arrays.asList(Arrays.asList("Luffy","Zoro","Chopper","Robin","Brook","Franky","Jimbe")
+        List<List<String>> listOfCrews = Arrays.asList(Arrays.asList("Luffy","Zoro","Chopper","Robin","Brook","Franky","Jimbe")
                 ,Arrays.asList("Law","WhiteBeard","Roger","Rayleigh","Gaban"));
-        List<Integer> map = list3.stream()
+        List<Integer> allNameLengths = listOfCrews.stream()
                 .flatMap(Collection::stream)
                 .map(String::length)
                 .toList();
-        System.out.println(map);
+        System.out.println(allNameLengths);
 
         //distinct: Removes duplicate elements.
         List<Integer> numbers = Arrays.asList(1, 2, 2, 3, 4, 4, 5,6,7,8,9,9);
@@ -55,9 +55,9 @@ public class IntermediateOperation {
         //peek(Consumer<T> action): It takes consumer as input
         List <String> crew = Arrays.asList("Luffy","Zoro","Chopper","Robin","Brook","Franky","Jimbe");
         List <String> crew1 = crew.stream()
-                .peek(str-> System.out.println("Before UpperCase "+str))
-                .map(x->x.toUpperCase())
-                .peek(str-> System.out.println("After UpperCase "+str))
+                .peek(str -> System.out.println("Original: " + str)) // Mainly for debugging
+                .map(String::toUpperCase)
+                .peek(str -> System.out.println("Transformed: " + str)) // Observe the transformation
                 .toList();
         System.out.println(crew1);
 
@@ -81,7 +81,7 @@ public class IntermediateOperation {
         //takeWhile(Predicate<T> predicate)
         List<Integer> nums = Arrays.asList(1,2,5,11,89,4,3,34,74,88);
         List<Integer> twoDigit = nums.stream()
-                .sorted(Comparator.reverseOrder()) //
+                .sorted(Comparator.reverseOrder()) //sorting stream elements in reverse order
                 .takeWhile(x-> x > 10)
                 .toList();
         System.out.println(twoDigit);
@@ -89,7 +89,7 @@ public class IntermediateOperation {
         //dropWhile: Drops elements while predicate is true, then takes the rest.
         //dropWhile(Predicate<T> predicate): It takes Predicate as input
         List<Integer> singleDigit = nums.stream()
-                .sorted(Comparator.reverseOrder())
+                .sorted(Comparator.reverseOrder()) //sorting stream elements in reverse order
                 .dropWhile(x->x > 10)
                 .toList();
         System.out.println(singleDigit);
