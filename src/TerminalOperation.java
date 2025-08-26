@@ -60,7 +60,7 @@ public class TerminalOperation {
                 .distinct()
                 .sorted(Comparator.reverseOrder())
                 .findAny();
-        anyParallel.ifPresent(a -> System.out.println("6a. Any element from parallel stream: " + a));
+        anyParallel.ifPresent(a -> System.out.println("Any element from parallel stream: " + a));
 
         any.ifPresent(a -> System.out.println("6. Any element (could be different in parallel): " + a));
         //Optional handling: Use .ifPresent() instead of .get() to avoid NoSuchElementException
@@ -97,7 +97,7 @@ public class TerminalOperation {
                 .toArray(Integer[]::new);
         System.out.println(Arrays.toString(arr));
 
-        // 13. Additional: iterator() - though not commonly used directly
+        // 13. iterator() - though not commonly used directly
         Iterator<String> iterator = name.stream()
                 .iterator();
         System.out.print("13. Iterator: ");

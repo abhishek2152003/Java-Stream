@@ -34,7 +34,7 @@ public class BasicLevel {
         System.out.println(list1.stream().sorted((x,y)-> y-x).toList());
 
         //7. How do you limit a stream to the first 5 elements?
-        System.out.println(Stream.iterate(1,x->x+1).limit(10).toList());
+        System.out.println(Stream.iterate(1,x->x+1).limit(5).toList());
 
         //8. How do you skip the first 3 elements in a stream?
         System.out.println(Stream.iterate(1,x->x+1).skip(3).limit(10).toList());

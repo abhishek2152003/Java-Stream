@@ -24,7 +24,7 @@ public class CollectorsExample {
         //3. Collect to Map
         Map<String,Integer> map = pirateCrew .stream()
                 .distinct()
-                .collect(Collectors.toMap(x->x, String::length));
+                .collect(Collectors.toMap(x->x, String::length));//lambda function x->x.length()
         System.out.println(map);
 
         //4. Collect to Collection (Specific Implementation)
@@ -32,7 +32,7 @@ public class CollectorsExample {
         LinkedList<Integer> linkedList = nums.stream()
                 .map(x->x*x)
                 .sorted()
-                .collect(Collectors.toCollection(LinkedList::new));
+                .collect(Collectors.toCollection(LinkedList::new));//lambda function () -> new LinkedList<>()
         System.out.println(linkedList);
 
         //5. Joining Strings
@@ -57,7 +57,8 @@ public class CollectorsExample {
         //8. Summarizing Statistics
         IntSummaryStatistics stat = nums.stream()
                 .collect(Collectors.summarizingInt(x -> x));
-        System.out.println(stat);
+                //getAverage() ,getCount() getMax() getMin() getSum()
+        System.out.println(stat.toString());
 
         // 9. Collect to Unmodifiable List
         List<String> unmodifiableUpperCase = pirateCrew.stream()
